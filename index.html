@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moadel-gir</title>
+</head>
+
+<body>
+    <h1>
+        نمره های خود را وارد کنید(رشته ریاضی)
+    </h1>
+    <ul id="grade-inp-list">
+    </ul>
+    <button id="calculateBtn">حساب نمره</button>
+    <h2 id="score"></h2>
+</body>
+<script>
+    let gradeList = document.getElementById("grade-inp-list")
+    let courses = [["فارسی", 15.81], ["عربی", 6.96], ["دینی", 12.72], ["زبان خارجی", 8.82], ["انسان و محیط زیست", 2.64], ["تاریخ", 3.06], ["حسابان", 10.08], ["هندسه", 5.94], ["آمار و احتمال", 5.04], ["فیزیک", 14.31], ["شیمی", 9.63], ["زمین شناسی", 5.01]]
+    courses.forEach((c) => {
+        let name = document.createElement("p")
+        name.textContent = c[0] + " : "
+        let inp = document.createElement("input")
+        inp.placeholder = " نمره " + c[0]
+        inp.type = "number"
+        inp.required = true
+        name.appendChild(inp)
+        gradeList.appendChild(document.createElement("li").appendChild(name))
+    }
+    )
+    document.getElementById("calculateBtn").addEventListener("click", () => {
+        let gradeList = document.getElementById("grade-inp-list")
+        let grades = []
+        console.log("jejk");
+        console.log(gradeList.childNodes)
+        for (let i = 1; i < gradeList.childNodes.length; i++) {
+            if (gradeList.childNodes[i].lastChild.value != "") {
+                grades.push(parseFloat(gradeList.childNodes[i].lastChild.value))
+            } else {
+                alert("لطفا همه نمرات را وارد کنید‍")
+                break
+            }
+        }
+        let gradesScaled = []
+        for (let i = 0; i < grades.length; i++) {
+            gradesScaled.push(grades[i] * courses[i][1])
+        }
+        let sumScaled = 0
+        gradesScaled.forEach((g) => {
+            sumScaled += g
+        })
+        let theScore = sumScaled / 100
+        console.log(theScore);
+        document.getElementById("score").textContent = sumScaled / 100
+    })
+</script>
+
+</html>
