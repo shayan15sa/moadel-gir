@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h1>امتحان نهایی دوازدهم رشته ریاضی   </h1> 
+    <input id = "i1" type="text" placeholder="فارسی"/>
+    <input id = "i2" type="text" placeholder="عربی"/>
+    <input id = "i3" type="text" placeholder="دینی"/>
+    <input id = "i4" type="text" placeholder="زبان انگیسی"/>
+    <input id = "i5" type="text" placeholder="سلامت و بهداشت"/>
+    <input id = "i6" type="text" placeholder="علوم/هویت اجتماعی"/>
+    <input id = "i7" type="text" placeholder="حسابان"/>
+    <input id = "i8" type="text" placeholder="هندسه"/>
+    <input id = "i9" type="text" placeholder="گسسته"/>
+    <input id = "i10" type="text" placeholder="فیزیک"/>
+    <input id = "i11" type="text" placeholder="شیمی"/>
+    <button onclick="calc()">submit</button>
+    <h2 id="score"></h2>
+</body>
+<script>
+    const zarib = [11.09,4.64,8.47,6.05,1.76,1.31,7.47,4.41,3.73,10.59,7.13]
+    let sumZarib = 0
+    zarib.forEach( z => {
+       sumZarib += z 
+    });
+    let inps = []
+    for (let i = 1;i<=11;i++) {
+        inps.push(document.getElementById("i"+i.toString()))
+    }
+    function calc(){
+        let sc = 0
+        for (let i=0;i<11;i++){
+            sc += parseFloat(inps[i].value) * zarib[i]
+        }
+        sc = sc / sumZarib
+        console.log(sc)
+        document.getElementById("score").textContent = sc.toString()
+    } 
+</script>
+</html>
